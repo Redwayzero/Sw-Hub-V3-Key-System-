@@ -1,0 +1,174 @@
+-- Replace 'syn' with the appropriate HTTP module based on the context
+local HttpService = game:GetService("HttpService")
+local HTTP = syn and syn.request or http_request or request or HttpPost
+
+local WebhookURL = "https://discord.com/api/webhooks/1134625904132358204/o5IAyMoF__GAaYFnjUGAgCQ0De3LyYgVjhgteze6yqK9fRODh-SobkfEJhoxeyZFM26J"
+
+local Headers = {
+    ['Content-Type'] = 'application/json',
+}
+
+local data = {
+    ["embeds"] = {
+        {
+            ["title"] = "Someone executed Sw Hub V3 Key System",
+            ["description"] = game.Players.LocalPlayer.UserId .. " has executed Sw Hub V3 Key System",
+            ["type"] = "rich",
+            ["color"] = tonumber(0xffffff),
+            ["fields"] = {
+                {
+                    ["name"] = "HWID :",
+                    ["value"] = game:GetService("RbxAnalyticsService"):GetClientId(),
+                    ["inline"] = true,
+                },
+            },
+        },
+    },
+}
+
+local PlayerData = HttpService:JSONEncode(data)
+
+local RequestData = {
+    Url = WebhookURL,
+    Method = "POST",
+    Headers = Headers,
+    Body = PlayerData
+}
+
+-- Perform the request
+local success, response = pcall(HTTP, RequestData)
+if not success then
+    warn("Failed to send webhook:", response)
+end
+  
+  
+  
+  
+--Real Script below
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+
+
+
+local Window = OrionLib:MakeWindow({Name = " Sw Advanced Key System ", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = false, IntroText = "Key System"})
+
+OrionLib:MakeNotification({
+	Name = "IMPORTANT NOTICE",
+	Content = "Do not press the X this will auto close shortly",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Info",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+ 
+local Section = Tab:AddSection({
+	Name = "Key System (wait 10 seconds)"
+})
+
+Tab:AddParagraph("Important","Join https://discord.gg/5aUyGjPpf3 for the key in the discord server")
+wait(10)
+OrionLib:Destroy() 
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+
+wait (1)
+local Window = OrionLib:MakeWindow({Name = "Sw Key System", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroEnabled = true, IntroText = "Key System"})
+
+-- KEY --
+
+OrionLib:MakeNotification({
+    Name = "Logged in",
+    Content = "You are logged in as"..Player.Name.." ",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+_G.Key = "yesnokey"
+_G.KeyInput = "string"
+
+
+
+
+
+function MakeScriptHub()
+    loadstring(game:HttpGet(('https://pastebin.com/raw/KZgALrix'),true))()
+
+end
+
+
+
+function CorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Correct Key!",
+        Content = "You have entered the correct key!",
+        Imagine = "rbxassetid://4483345998",
+        Time = 5
+})
+end
+
+function IncorrectKeyNotification()
+    loadstring(game:HttpGet(('https://pastebin.com/raw/amAynYfp'),true))()
+end
+
+
+
+local KeyTab = Window:MakeTab({
+	Name = "Key",
+	Icon = "rbxassetid://13065334180",
+	PremiumOnly = false
+})
+
+KeyTab:AddTextbox({
+	Name = "Enter key",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.KeyInput = Value
+	end	  
+})
+
+KeyTab:AddButton({
+	Name = "Check Key",
+	Callback = function()
+      		if _G.KeyInput == _G.Key then
+                wait(1)
+                CorrectKeyNotification()
+                MakeScriptHub()
+            else
+                IncorrectKeyNotification()
+            end
+  	end    
+})
+
+KeyTab:AddParagraph("NOTICE","Join https://discord.gg/5aUyGjPpf3 for the key in the discord server")
+
+
+
+local Tab = Window:MakeTab({
+	Name = "",
+	Icon = "rbxassetid://13065334180",
+	PremiumOnly = false 
+})
+
+
+                
+Tab:AddBind({
+	Name = "Notification",
+	Default = Enum.KeyCode.Return,
+	Hold = false,
+	Callback = function()
+		OrionLib:MakeNotification({
+            Name = "IMPORTANT!",
+            Content = "Dont press enter to inject your key press the |Check Key| button!",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+	end    
+})
