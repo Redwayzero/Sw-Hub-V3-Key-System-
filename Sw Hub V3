@@ -90,7 +90,7 @@ OrionLib:MakeNotification({
     Time = 5
 })
 
-_G.Key = "yesnokey"
+_G.Key = "800+members"
 _G.KeyInput = "string"
 
 
